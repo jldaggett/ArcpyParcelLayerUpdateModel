@@ -9,7 +9,7 @@ from datetime import datetime
 #GETS INPUT TABLE PARAMETER FROM MODEL BUILDER (JOINED TABLE)
 input_table = arcpy.GetParameterAsText(0)
 
-# GET OUTPUT LOCATION OF EXPORTED JOIN FILE
+#GETS OUTPUT LOCATION OF EXPORTED JOIN FILE
 network_export_file = arcpy.GetParameterAsText(1)
 
 #DEFINES VARIABLES
