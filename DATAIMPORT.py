@@ -72,7 +72,7 @@ excel_file_path = os.path.join(extract_folder, "Parcel GIS.xlsx")
 try:
     arcpy.AddMessage(f"Processing Excel file: {excel_file_path}")
     
-    #9.1 CHECK IF FILE EXISTS
+    #CHECK IF FILE EXISTS
     if not os.path.exists(excel_file_path):
         arcpy.AddError(f"Excel file not found: {excel_file_path}")
         #LIST FILES IN DIRECTORY TO SEE WHAT'S THERE
@@ -87,11 +87,11 @@ try:
     arcpy.AddMessage("Excel file read successfully")
 
 
-    #9REMOVES SPACES FROM FIELD NAMES
+    #REMOVES SPACES FROM FIELD NAMES
     df.columns = df.columns.str.replace(' ', '')
     arcpy.AddMessage(f"Cleaned column names: {list(df.columns)}")
 
-    #SAVSE MODIFIED FILE AS XLSX
+    #SAVES MODIFIED FILE AS XLSX
     modified_file_path = os.path.join(extract_folder, "ParcelGIS.xlsx")
     df.to_excel(modified_file_path, sheet_name="Sheet1", index=False)
     arcpy.AddMessage(f"Modified XLSX file saved to: {modified_file_path}")
@@ -103,4 +103,5 @@ except Exception as e:
 #SETS THE OUTPUT PARAMETER
 arcpy.SetParameterAsText(0, modified_file_path)
 arcpy.AddMessage("Script completed successfully!")
+
 
