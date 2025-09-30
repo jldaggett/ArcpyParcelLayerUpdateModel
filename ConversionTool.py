@@ -1,4 +1,4 @@
-#0. IMPORT PACKAGES
+#IMPORTS PACKAGES
 import arcpy
 import urllib.request
 import zipfile
@@ -10,20 +10,20 @@ import tempfile
 
 arcpy.env.overwriteOutput = True
 
-#1.0 DEFINE VARIABLES
+#DEFINES VARIABLES
 current_year = datetime.now().strftime("%Y")
 today_date = datetime.now().strftime("%m%d%Y")
 
-#3.0 CHECK IF NETWORK PATH EXISTS
+#CHECKS IF NETWORK PATH EXISTS
 extract_folder = rf"\\MCGIS\Data\MapData\Parcel\{current_year}\{today_date}"
 ISSG_file_unconverted= os.path.join(extract_folder, "ParcelGIS.xlsx")
 outtable= os.path.join(extract_folder, "ParcelGIS")
 
-# Check if input exists
+#CHECKS IF INPUT EXISTS
 if arcpy.Exists(ISSG_file_unconverted):
     arcpy.AddMessage("ISSG unconverted Excel File found successfully")
 
-    #Create table
+    #CREATES DBTABLE
     arcpy.AddMessage("Converting Excel to table...")
     arcpy.conversion.ExcelToTable(
         Input_Excel_File=ISSG_file_unconverted,
@@ -34,9 +34,10 @@ if arcpy.Exists(ISSG_file_unconverted):
     )
     arcpy.AddMessage("Excel to Table conversion complete!")
 
-# SET THE OUTPUT PARAMETER
+#SETS OUTPUT PARAMETER
 arcpy.SetParameterAsText(0, outtable)
 arcpy.AddMessage("Script completed successfully!")
+
 
 
 
