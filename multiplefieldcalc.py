@@ -16,10 +16,8 @@ try:
             ["TAXMAPLINK", r'"\\mcgis\data\SCANS\TAX MAPS\TAX MAPS 2004 PDF\\" + !TOWNSHIP! + "\\" + !MAP_NUM! + ".pdf"'],
             ["ISSG", r'"https://muskingum-real.issg.io/RealEstate/Appraisal?ParcelNumber=" + !OLDPARCEL!'],
             ["SCANLINK_P", r'"\\mcgis\Data\SCANS\SURVEY 2\\" + !TOWNSHIP! + "\\" + !TOWNSHIP! + " " + !MAP_NUM! + "\\" + !OLDPARCEL! + ".pdf"'],
-            ["DBRef", "!DeedVolume!"],
-            ["DPRef", "!DeedPage!"],
-            ["DeedVolume", "str(!DBRef!)"],
-            ["DeedPage", "str(!DPRef!)"],
+            ["DeedVolume", "str(int(!DBRef!))"],
+            ["DeedPage", "str(int(!DPRef!))"],
             ["RecLink", r'"https://cotthosting.com/ohmuskingum/LandRecords/protected/SrchBookPage.aspx?bAutoSearch=true&bk=" + !DeedVolume! + "&pg=" + !DeedPage! + "&idx=OFF"']
         ],
         code_block="",
